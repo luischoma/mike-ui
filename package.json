@@ -10,8 +10,18 @@
     "dev": "echo \"TODO: dev\"",
     "build": "echo \"TODO: build\"",
     "test": "echo \"TODO: test\"",
-    "lint": "echo \"TODO: lint\"",
-    "typecheck": "echo \"TODO: typecheck\"",
-    "format": "echo \"TODO: format\""
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3"
   }
 }

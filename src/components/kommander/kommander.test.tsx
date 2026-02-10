@@ -1,18 +1,44 @@
-import { render } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { cleanup, fireEvent, render } from "@testing-library/react";
+import { afterEach, describe, expect, it } from "vitest";
 
 import { Kommander } from "./kommander";
 
-describe("Kommander", () => {
-  it("renders with the default title", () => {
-    const { getByText } = render(<Kommander />);
+const pressHotkey = () => {
+  fireEvent.keyDown(window, { key: "k", metaKey: true });
+};
 
-    expect(getByText("Kommander — Hello world")).toBeTruthy();
+describe("Kommander", () => {
+  afterEach(() => {
+    cleanup();
   });
 
-  it("renders with a custom title", () => {
+  it("renders nothing when closed", () => {
+    const { container } = render(<Kommander />);
+
+    expect(container.querySelector("[role='dialog']")).toBeNull();
+  });
+
+  it("opens on Cmd+K", () => {
+    const { getByRole } = render(<Kommander />);
+
+    pressHotkey();
+
+    expect(getByRole("dialog")).toBeTruthy();
+  });
+
+  it("renders the default title when open", () => {
+    const { getByText } = render(<Kommander />);
+
+    pressHotkey();
+
+    expect(getByText("Kommander")).toBeTruthy();
+  });
+
+  it("renders a custom title when open", () => {
     const { getByText } = render(<Kommander title="My Palette" />);
 
-    expect(getByText("My Palette — Hello world")).toBeTruthy();
+    pressHotkey();
+
+    expect(getByText("My Palette")).toBeTruthy();
   });
 });

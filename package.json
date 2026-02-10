@@ -7,9 +7,18 @@
   "engines": {
     "node": ">=20"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    "./kommander": {
+      "types": "./dist/kommander.d.ts",
+      "default": "./dist/kommander.js"
+    }
+  },
   "scripts": {
     "dev": "echo \"TODO: dev\"",
-    "build": "echo \"TODO: build\"",
+    "build": "tsup",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
@@ -36,6 +45,7 @@
     "prettier": "^3.8.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
     "vitest": "^4.0.18"

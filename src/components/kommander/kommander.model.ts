@@ -10,6 +10,5 @@ export type Command = {
 };
 
 export type KommanderProps = {
-  commands: Command[];
-  label?: string;
+  title?: string;
 };

@@ -4,9 +4,15 @@ import { describe, expect, it } from "vitest";
 import { Kommander } from "./kommander";
 
 describe("Kommander", () => {
-  it("renders the hello world heading", () => {
+  it("renders with the default title", () => {
     const { getByText } = render(<Kommander />);
 
-    expect(getByText("Hello world")).toBeTruthy();
+    expect(getByText("Kommander — Hello world")).toBeTruthy();
+  });
+
+  it("renders with a custom title", () => {
+    const { getByText } = render(<Kommander title="My Palette" />);
+
+    expect(getByText("My Palette — Hello world")).toBeTruthy();
   });
 });

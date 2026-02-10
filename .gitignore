@@ -141,3 +141,5 @@ vite.config.ts.timestamp-*
 # mike-ui
 docs/*
 .cursor
+*storybook.log
+storybook-static
